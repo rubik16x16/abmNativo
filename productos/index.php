@@ -13,14 +13,19 @@ $tabla= '
   <tr>
     <th>Nombre</th>
     <th>Precio</th>
+    <th>Acciones</th>
   </tr>';
 
 foreach($productos as $producto){
-  $tabla.="
+  $tabla.='
   <tr>
-    <td>{$producto['nombre']}</td>
-    <td>{$producto['precio']}</td>
-  </tr>";
+    <td>'.$producto['nombre'].'</td>
+    <td>'.$producto['precio'].'</td>
+    <td>
+      <a href="edit.php?id='.$producto['id'].'">Editar</a>/
+      <a href="abmController.php?id='.$producto['id'].'&type=3">Eliminar</a>
+    </td>
+  </tr>';
 }
 
 $tabla.= '</table>';

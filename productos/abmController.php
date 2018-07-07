@@ -20,14 +20,26 @@ class abmController{
 
   }
 
+  public function update(){
+
+    $query="UPDATE productos SET nombre='".$_POST['nombre']."', precio='".$_POST['precio']."' WHERE id={$_POST['id']}";
+    $this->mysqli->query($query);
+    return header("Location:index.php");
+
+  }
+
 }
 
 $abmController= new abmController($mysqli);
 
 switch ($_GET['type']) {
   case 1:
-    echo $abmController->store();
-    break;
+    $abmController->store();
+  break;
+
+  case 2:
+    $abmController->update();
+  break;
 
   default:
     break;
