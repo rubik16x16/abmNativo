@@ -2,9 +2,10 @@
 
 require "../boot.php";
 
-$query= $mysqli->query("SELECT * from productos");
-while($buffer= $query->fetch_assoc()){
-  $productos[] = $buffer;
+$query="SELECT * from productos";
+$buffer= $mysqli->query($query);
+while($row= $buffer->fetch_assoc()){
+  $productos[] = $row;
 }
 
 $tabla= '
