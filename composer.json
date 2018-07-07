@@ -1,0 +1,13 @@
+{
+    "name": "abmnativo/abmnativo",
+    "description": "abm nativo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "rubik16x16",
+            "email": "drt_mike@hotmail.com"
+        }
+    ],
+    "require": {}
+    }
+}

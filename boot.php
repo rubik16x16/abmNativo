@@ -1,36 +1,12 @@
 <?php
 
-class env{
+include 'EnvironmentFileVars.php';
 
-  private $envVars;
+$env= new environmentFileVars();
 
-  public function __construct(){
+var_dump($env->get('DB_HOST'));
 
-    $this->envVars= $this->readEnvFile();
-
-  }
-
-  private function readEnvFile(){
-
-    if(file_exists('.env')){
-      $envFile= fopen('.env', 'r');
-      while(($buffer= fgets($envFile)) != false){
-        list($k, $v)=(explode('=', $buffer));
-        $envVars[$k]= $v;
-      }
-      return $envVars;
-    }
-    throw new exception('Archivo .env no existe');
-  }
-
-  public function get($key){
-
-    if(isset($this->envVars[$key])){
-      return $this->envVars[$key];
-    }
-    throw new exception("La variable {$key} no esta definida en su archivo env");
-  }
-
-}
-
-$env= new env();
+$mysqli = new mysqli($env->get('DB_HOST'), $env->get('DB_USER'), $env->get('DB_PASS'), $env->get('DB_NAME'));
+$query= $mysqli->query("SELECT * from productos");
+$recordSet= $query->fetch_assoc();
+var_dump($recordSet);
