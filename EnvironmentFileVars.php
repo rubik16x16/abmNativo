@@ -9,8 +9,9 @@ class EnvironmentFileVars{
   }
 
   private function readEnvFile(){
-    if(file_exists('.env')){
-      $envFile= fopen('.env', 'r');
+    $envFileUrl= $_SERVER['DOCUMENT_ROOT'] . "/abmNativo/.env";
+    if(file_exists($envFileUrl)){
+      $envFile= fopen($envFileUrl, 'r');
       while(($buffer= fgets($envFile)) != false){
         list($k, $v)=(explode('=', $buffer));
         $envVars[$k]= rtrim($v);
